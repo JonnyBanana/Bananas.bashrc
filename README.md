@@ -9,6 +9,5 @@ if you want to reuse the file, remember to add the "." at the beginning of the f
 Or simply copy and paste the content of the txt file at the beginning of yor .bashrc file
 (remember to make a backup first!)
 
-
-
+![Alt text](https://raw.githubusercontent.com/JonnyBanana/Bananas.bashrc/master/IMG/Monkey_Bananas.JPG)
 
