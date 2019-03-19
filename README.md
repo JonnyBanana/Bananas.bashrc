@@ -1,7 +1,7 @@
 # Bananas.bashrc
 my personal .bashrc file, with all my alias, tricks and ascii art
 
-
+![Alt text](https://raw.githubusercontent.com/JonnyBanana/Bananas.bashrc/master/IMG/Bananas2.JPG)
 
 if you want to reuse the file, remember to add the "." at the beginning of the file
 (Giuthub does not allow to upload files that have a "." At the beginning of the file)
