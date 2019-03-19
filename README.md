@@ -1,5 +1,5 @@
 # Bananas.bashrc
-my personal .bashrc file, with all my alias, tricks and ascci art
+my personal .bashrc file, with all my alias, tricks and ascii art
 
 
 
