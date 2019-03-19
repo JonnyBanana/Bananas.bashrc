@@ -1,5 +1,5 @@
 # Bananas.bashrc
-my personal .bashrc file, with all my alias, tricks and ascii art
+my personal .bashrc files, with all my alias, tricks and ascii art
 
 ![Alt text](https://raw.githubusercontent.com/JonnyBanana/Bananas.bashrc/master/IMG/Bananas2.JPG)
 
