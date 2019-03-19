@@ -1,2 +1,14 @@
 # Bananas.bashrc
 my personal .bashrc file, with all my alias, tricks and ascci art
+
+
+
+if you want to reuse the file, remember to add the "." at the beginning of the file
+(Giuthub does not allow to upload files that have a "." At the beginning of the file)
+
+Or simply copy and paste the content of the txt file at the beginning of yor .bashrc file
+(remember to make a backup first!)
+
+
+
+
