@@ -1,0 +1,653 @@
+echo"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" 
+echo"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+echo"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+echo"$$$                                           $$$"
+echo"$$$                 JONNY                     $$$"         
+echo"$$$         .--.  .-"     "-.  .--.           $$$"
+echo"$$$        / .. \/  .-. .-.  \/ .. \          $$$"
+echo"$$$       | |  '|  /   Y   \  |'  | |         $$$"
+echo"$$$       | \   \  \ 0 | 0 /  /   / |         $$$"
+echo"$$$        \ '- ,\.-"`` ``"-./, -' /          $$$"
+echo"$$$         `'-' /_   ^ ^   _\ '-'`           $$$"
+echo"$$$         .--'|  \._ _ _./  |'--.           $$$"
+echo"$$$       /`    \   \.-.  /   /    `\         $$$"
+echo"$$$      /       '._/  |-' _.'       \        $$$"
+echo"$$$     /          ;  /--~'   |       \       $$$"
+echo"$$$    /        .'\|.-\--.     \       \      $$$"
+echo"$$$   /   .'-. /.-.;\  |\|'~'-.|\       \     $$$"
+echo"$$$   \       `-./`|_\_/ `     `\'.      \    $$$"
+echo"$$$    '.      ;     ___) BANANA '.`;    /    $$$"
+echo"$$$     '-.,_ ;     ___)          \/   /      $$$"
+echo"$$$       \   ``'------'\       \   `  /      $$$"
+echo"$$$        '.    \       '.      |   ;/_      $$$"
+echo"$$$      ___>     '.       \_ _ _/   ,  '--.  $$$"
+echo"$$$    .'   '.   .-~~~~~-. /     |--'`~~-.  \ $$$"
+echo"$$$   // / .---'/  .-~~-._/ / / /---..__.'  / $$$"
+echo"$$$  ((_(_/    /  /      (_(_(_(---.__    .'  $$$"
+echo"$$$            | |     _              `~~`    $$$"
+echo"$$$            | |     \'.                    $$$"
+echo"$$$             \ '....' |                    $$$"
+echo"$$$              '.,___.'                     $$$"
+echo"$$$ 			                               $$$"
+echo"$$$ 		    @@@MONKEY DEALER@@@	           $$$" 
+echo"$$$ 			                               $$$"
+echo"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+echo"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+echo"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+			 
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# Aliases Sudo Commands                            
+alias install='sudo apt-get install'
+alias remove='sudo apt-get remove'
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get update && sudo apt-get upgrade'
+
+# become root #
+alias root='sudo -i'
+alias su='sudo -i'
+
+
+# Aliases Power
+alias rebot="sudo shutdown -r now"
+alias shut="sudo shutdown -h now"
+alias reboot='sudo /sbin/reboot'
+alias poweroff='sudo /sbin/poweroff'
+alias halt='sudo /sbin/halt'
+alias shutdown='sudo /sbin/shutdown'
+
+
+#------------------------------------------////
+# Colors:
+#------------------------------------------////
+black='\e[0;30m'
+blue='\e[0;34m'
+green='\e[0;32m'
+cyan='\e[0;36m'
+red='\e[0;31m'
+purple='\e[0;35m'
+brown='\e[0;33m'
+lightgray='\e[0;37m'
+darkgray='\e[1;30m'
+lightblue='\e[1;34m'
+lightgreen='\e[1;32m'
+lightcyan='\e[1;36m'
+lightred='\e[1;31m'
+lightpurple='\e[1;35m'
+yellow='\e[1;33m'
+white='\e[1;37m'
+nc='\e[0m'
+
+
+# CD- Function (cd- to go back to previous folder)  
+
+   function cdn(){
+    cmd=""
+    for (( i=0; i < $1; i++)) 
+    do  
+        cmd="$cmd../"
+    done
+    cd "$cmd"
+    }
+	
+	
+#Cd and ls In ONE (use ls to make cd + ls)
+
+    alias la='ls -lah $LS_COLOR'
+    # awesome!  CD AND LA. I never use 'cd' anymore...
+    function cl(){ cd "$@" && la; }
+	
+#Easy GIT
+	
+    alias gs="git status"
+    alias ga="git add"
+    alias gc="git commit -m"
+    alias gp="git push -u origin master"
+	
+#LS Easy
+    alias lsa='ls -A'
+    alias las='ls -A'
+    alias la='ls -A'
+    alias l='ls'
+    alias s='ls'
+    alias sls='ls'
+    alias sl='ls'
+    alias llh='ls -lh'
+    alias lsh='ls -lh'
+	
+	
+#Better CD
+    alias cd..='cd ..'
+    alias ..="cd .."
+    alias ...="cd ../.."
+	
+	
+#Root Colors	
+	
+export PS1='\[\e[36;1m\]\u\[\e[01;30m\]@\[\e[32;1m\]\h:\[\e[01;35m\]\w \$ \[\e[0m\]'
+	
+
+#ctrl-right and ctrl-left keys move between words
+
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word
+
+
+#Single tab for completion; complete the word as far as possible and show remaining possible completions
+
+set show-all-if-ambiguous on
+	
+
+#invoke man page for the command in the current line with alt+h
+
+"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"
+
+
+#automatically add sudo to the beginning of the line with alt+s
+
+"\es":"\C-asudo \C-e"
+
+
+#Display your path as a vertical list
+
+path() ( IFS=: ; printf '%s\n' $PATH ; )
+
+
+#prevent deep recursion
+
+export FUNCNEST=50    # limit depth of recursion in bash function calls
+
+
+#verifying checksums of downloaded files - example for an .iso check md5sum -c antergos.iso.md5 (ok or corrupted)
+
+__common_sum() { command ${FUNCNAME[1]} --ignore-missing "$@" ; }
+
+md5sum()    { __common_sum "$@" ; }
+sha1sum()   { __common_sum "$@" ; }
+sha224sum() { __common_sum "$@" ; }
+sha256sum() { __common_sum "$@" ; }
+sha384sum() { __common_sum "$@" ; }
+sha512sum() { __common_sum "$@" ; }
+
+
+# Stop after sending count ECHO_REQUEST packets #
+alias ping='ping -c 5'
+
+# Do not wait interval 1 second, go fast #
+alias fastping='ping -c 100 -s.2'
+
+
+## replace mac with your actual server mac address #
+alias wakeupnas01='/usr/bin/wakeonlan 00:11:32:11:15:FC'
+alias wakeupnas02='/usr/bin/wakeonlan 00:11:32:11:15:FD'
+alias wakeupnas03='/usr/bin/wakeonlan 00:11:32:11:15:FE'
+
+
+## shortcut  for iptables and pass it via sudo#
+alias ipt='sudo /sbin/iptables'
+ 
+# display all rules #
+alias iptlist='sudo /sbin/iptables -L -n -v --line-numbers'
+alias iptlistin='sudo /sbin/iptables -L INPUT -n -v --line-numbers'
+alias iptlistout='sudo /sbin/iptables -L OUTPUT -n -v --line-numbers'
+alias iptlistfw='sudo /sbin/iptables -L FORWARD -n -v --line-numbers'
+alias firewall=iptlist
+
+# get web server headers #
+alias header='curl -I'
+ 
+# find out if remote server supports gzip / mod_deflate or not #
+alias headerc='curl -I --compress'
+
+
+
+#------------------------------------------////
+
+#Add safety nets#
+
+#------------------------------------------////
+
+# do not delete / or prompt if deleting more than 3 files at a time #
+alias rm='rm -I --preserve-root'
+ 
+# confirmation #
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+ 
+# Parenting changing perms on / #
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+#------------------------------------------////
+
+	
+#------------------------------------------////
+
+
+#Control web servers
+# also pass it via sudo so whoever is admin can reload it without calling you #
+alias nginxreload='sudo /usr/local/nginx/sbin/nginx -s reload'
+alias nginxtest='sudo /usr/local/nginx/sbin/nginx -t'
+alias lightyload='sudo /etc/init.d/lighttpd reload'
+alias lightytest='sudo /usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf -t'
+alias httpdreload='sudo /usr/sbin/apachectl -k graceful'
+alias httpdtest='sudo /usr/sbin/apachectl -t && /usr/sbin/apachectl -t -D DUMP_VHOSTS'
+
+
+
+#------------------------------------------////
+
+#BACKUP STUFF#
+
+#------------------------------------------////
+# if cron fails or if you want backup on demand just run these commands #
+# again pass it via sudo so whoever is in admin group can start the job #
+# Backup scripts #
+alias backup='sudo /home/scripts/admin/scripts/backup/wrapper.backup.sh --type local --taget /raid1/backups'
+alias nasbackup='sudo /home/scripts/admin/scripts/backup/wrapper.backup.sh --type nas --target nas01'
+alias s3backup='sudo /home/scripts/admin/scripts/backup/wrapper.backup.sh --type nas --target nas01 --auth /home/scripts/admin/.authdata/amazon.keys'
+alias rsnapshothourly='sudo /home/scripts/admin/scripts/backup/wrapper.rsnapshot.sh --type remote --target nas03 --auth /home/scripts/admin/.authdata/ssh.keys --config /home/scripts/admin/scripts/backup/config/adsl.conf'
+alias rsnapshotdaily='sudo  /home/scripts/admin/scripts/backup/wrapper.rsnapshot.sh --type remote --target nas03 --auth /home/scripts/admin/.authdata/ssh.keys  --config /home/scripts/admin/scripts/backup/config/adsl.conf'
+alias rsnapshotweekly='sudo /home/scripts/admin/scripts/backup/wrapper.rsnapshot.sh --type remote --target nas03 --auth /home/scripts/admin/.authdata/ssh.keys  --config /home/scripts/admin/scripts/backup/config/adsl.conf'
+alias rsnapshotmonthly='sudo /home/scripts/admin/scripts/backup/wrapper.rsnapshot.sh --type remote --target nas03 --auth /home/scripts/admin/.authdata/ssh.keys  --config /home/scripts/admin/scripts/backup/config/adsl.conf'
+alias amazonbackup=s3backup
+
+#------------------------------------------////
+
+	
+#------------------------------------------////
+
+
+
+## play video files in a current directory ##
+# cd ~/Download/movie-name
+# playavi or vlc
+alias playavi='mplayer *.avi'
+alias vlc='vlc *.avi'
+ 
+# play all music files from the current directory #
+alias playwave='for i in *.wav; do mplayer "$i"; done'
+alias playogg='for i in *.ogg; do mplayer "$i"; done'
+alias playmp3='for i in *.mp3; do mplayer "$i"; done'
+ 
+# play files from nas devices #
+alias nplaywave='for i in /nas/multimedia/wave/*.wav; do mplayer "$i"; done'
+alias nplayogg='for i in /nas/multimedia/ogg/*.ogg; do mplayer "$i"; done'
+alias nplaymp3='for i in /nas/multimedia/mp3/*.mp3; do mplayer "$i"; done'
+ 
+# shuffle mp3/ogg etc by default #
+alias music='mplayer --shuffle *'
+
+
+
+
+
+#------------------------------------------////
+
+#SYSADMIN RELATED COMMANDS#
+
+#------------------------------------------////
+## All of our servers eth1 is connected to the Internets via vlan / router etc  ##
+alias dnstop='dnstop -l 5  eth1'
+alias vnstat='vnstat -i eth1'
+alias iftop='iftop -i eth1'
+alias tcpdump='tcpdump -i eth1'
+alias ethtool='ethtool eth1'
+ 
+# work on wlan0 by default #
+# Only useful for laptop as all servers are without wireless interface
+alias iwconfig='iwconfig wlan0'
+#------------------------------------------////
+
+	
+#------------------------------------------////
+
+
+#@@Get system memory, cpu usage, and gpu memory info quickly@@#
+
+## pass options to free ##
+alias meminfo='free -m -l -t'
+ 
+## get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+ 
+## get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+ 
+## Get server cpu info ##
+alias cpuinfo='lscpu'
+ 
+## older system use /proc/cpuinfo ##
+##alias cpuinfo='less /proc/cpuinfo' ##
+ 
+## get GPU ram on desktop / laptop##
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+
+
+#@@BROWSER - HTML _TEST@@#
+
+## this one saved by butt so many times ##
+alias ff4='/opt/firefox4/firefox'
+alias ff13='/opt/firefox13/firefox'
+alias chrome='/opt/google/chrome/chrome'
+alias opera='/opt/opera/opera'
+ 
+#default ff
+alias ff=ff13
+ 
+#my default browser
+alias browser=opera
+
+
+## nfsrestart  - must be root  ##
+## refresh nfs mount / cache etc for Apache ##
+alias nfsrestart='sync && sleep 2 && /etc/init.d/httpd stop && umount netapp2:/exports/http && sleep 2 && mount -o rw,sync,rsize=32768,wsize=32768,intr,hard,proto=tcp,fsc natapp2:/exports /http/var/www/html &&  /etc/init.d/httpd start'
+
+
+#-------------------------------------------------------------
+# Shell Prompt - for many examples, see:
+#       http://www.debian-administration.org/articles/205
+#       http://www.askapache.com/linux/bash-power-prompt.html
+#       http://tldp.org/HOWTO/Bash-Prompt-HOWTO
+#       https://github.com/nojhan/liquidprompt
+#-------------------------------------------------------------
+# Current Format: [TIME USER@HOST PWD] >
+# TIME:
+#    Green     == machine load is low
+#    Orange    == machine load is medium
+#    Red       == machine load is high
+#    ALERT     == machine load is very high
+# USER:
+#    Cyan      == normal user
+#    Orange    == SU to user
+#    Red       == root
+# HOST:
+#    Cyan      == local session
+#    Green     == secured remote connection (via ssh)
+#    Red       == unsecured remote connection
+# PWD:
+#    Green     == more than 10% free disk space
+#    Orange    == less than 10% free disk space
+#    ALERT     == less than 5% free disk space
+#    Red       == current user does not have write privileges
+#    Cyan      == current filesystem is size zero (like /proc)
+# >:
+#    White     == no background or suspended jobs in this shell
+#    Cyan      == at least one background job in this shell
+#    Orange    == at least one suspended job in this shell
+#
+#    Command is added to the history file each time you hit enter,
+#    so it's available to all shells (using 'history -a').
+
+
+# Test connection type:
+if [ -n "${SSH_CONNECTION}" ]; then
+    CNX=${Green}        # Connected on remote machine, via ssh (good).
+elif [[ "${DISPLAY%%:0*}" != "" ]]; then
+    CNX=${ALERT}        # Connected on remote machine, not via ssh (bad).
+else
+    CNX=${BCyan}        # Connected on local machine.
+fi
+
+# Test user type:
+if [[ ${USER} == "root" ]]; then
+    SU=${Red}           # User is root.
+elif [[ ${USER} != $(logname) ]]; then
+    SU=${BRed}          # User is not login user.
+else
+    SU=${BCyan}         # User is normal (well ... most of us are).
+fi
+
+
+
+NCPU=$(grep -c 'processor' /proc/cpuinfo)    # Number of CPUs
+SLOAD=$(( 100*${NCPU} ))        # Small load
+MLOAD=$(( 200*${NCPU} ))        # Medium load
+XLOAD=$(( 400*${NCPU} ))        # Xlarge load
+
+# Returns system load as percentage, i.e., '40' rather than '0.40)'.
+function load()
+{
+    local SYSLOAD=$(cut -d " " -f1 /proc/loadavg | tr -d '.')
+    # System load of the current host.
+    echo $((10#$SYSLOAD))       # Convert to decimal.
+}
+
+# Returns a color indicating system load.
+function load_color()
+{
+    local SYSLOAD=$(load)
+    if [ ${SYSLOAD} -gt ${XLOAD} ]; then
+        echo -en ${ALERT}
+    elif [ ${SYSLOAD} -gt ${MLOAD} ]; then
+        echo -en ${Red}
+    elif [ ${SYSLOAD} -gt ${SLOAD} ]; then
+        echo -en ${BRed}
+    else
+        echo -en ${Green}
+    fi
+}
+
+# Returns a color according to free disk space in $PWD.
+function disk_color()
+{
+    if [ ! -w "${PWD}" ] ; then
+        echo -en ${Red}
+        # No 'write' privilege in the current directory.
+    elif [ -s "${PWD}" ] ; then
+        local used=$(command df -P "$PWD" |
+                   awk 'END {print $5} {sub(/%/,"")}')
+        if [ ${used} -gt 95 ]; then
+            echo -en ${ALERT}           # Disk almost full (>95%).
+        elif [ ${used} -gt 90 ]; then
+            echo -en ${BRed}            # Free disk space almost gone.
+        else
+            echo -en ${Green}           # Free disk space is ok.
+        fi
+    else
+        echo -en ${Cyan}
+        # Current directory is size '0' (like /proc, /sys etc).
+    fi
+}
+
+# Returns a color according to running/suspended jobs.
+function job_color()
+{
+    if [ $(jobs -s | wc -l) -gt "0" ]; then
+        echo -en ${BRed}
+    elif [ $(jobs -r | wc -l) -gt "0" ] ; then
+        echo -en ${BCyan}
+    fi
+}
+
+#-------------------------------------------------------------
+# Misc utilities:
+#-------------------------------------------------------------
+
+function repeat()       # Repeat n times command.
+{
+    local i max
+    max=$1; shift;
+    for ((i=1; i <= max ; i++)); do  # --> C-like syntax
+        eval "$@";
+    done
+}
+
+
+function ask()          # See 'killps' for example of use.
+{
+    echo -n "$@" '[y/n] ' ; read ans
+    case "$ans" in
+        y*|Y*) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+function corename()   # Get name of app that created a corefile.
+{
+    for file ; do
+        echo -n $file : ; gdb --core=$file --batch | head -1
+    done
+}
+	
+#Aliases
+
+alias mkdri='mkdir'
+alias mkdr='mkdir'
+alias mkdi='mkdir'
+alias grep='grep --color'
+alias ll='ls -l'
+alias lsl='ls -l'
+alias la='ls -A'
+alias lsa='ls -A'
+alias cls=clear # more cmd style alias
+alias reload='source ~/.bashrc' #reloads .bashrc
+alias myhistory='cat ~/bashbackup.txt'
+alias proxy='cat -n /etc/apt/apt.conf'
+alias d='date'
+alias ack='ack-grep'
+alias mymakehere='cp /home/chaudhary/Makefile ./'
+alias cdsfd='cd ~/open/sfd'
+alias cdop='cd ~/open'
+alias cdos='cd ~/code/os/'
+alias cdsok='cd ~/open/sok'
+alias cdcpp='cd ~/code/cpp/'
+alias cdja='cd ~/code/java/'
+alias cdal='cd ~/code/algo/'
+alias cdpy='cd ~/code/python'
+alias cdli='cd ~/code/linux'
+alias cdk='cd ~/code/kernel'
+alias cdtor='cd /home/chaudhary/kernel/git_linux_repo/linux_torvalds'
+alias cdd='cd ~/code'
+alias cdc='cd ~/code/c'
+alias cdcdp='cd ~/code/codpro'
+alias cdcf='cd ~/code/codpro/chef'
+alias cdfor='cd ~/code/codpro/forces'
+alias cdqt='cd ~/code/qt'
+alias cdds='cd ~/code/ds/dshome/dsadv'
+alias cdre='cd ~/code/ds/dshome/revision'
+alias cdsc='cd ~/code/scripts'
+alias cdht='cd ~/code/html'
+alias ports='netstat -tulanp'
