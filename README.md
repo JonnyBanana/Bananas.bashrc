@@ -11,3 +11,12 @@ Or simply copy and paste the content of the txt file at the beginning of yor .ba
 
 ![Alt text](https://raw.githubusercontent.com/JonnyBanana/Bananas.bashrc/master/IMG/Monkey_Bananas.JPG)
 
+
+
+
+</BR>
+
+<a href="https://golden-farm.biz/?r=1673249" target="_blank">
+<img src="https://golden-farm.biz/images/promo/en/728x90.gif"
+alt="Profit every 10 minutes!"></a>
+
